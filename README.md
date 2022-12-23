@@ -19,7 +19,7 @@
 3. Modificar el .env:
     DATABASE_URL="mysql://root:@127.0.0.1:3306/DATABASE?serverVersion=8.0.27"
 4. Abre terminal en carpeta de proyecto
-5. Ejecuta las migraciones.
+5. Ejecuta las migraciones. (php bin/console doctrine:migrations:migrate)
 
 ## Acceder a la Aplicacion
 1. entrar en http://localhost/nombrehostvirtual
