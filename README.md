@@ -9,7 +9,7 @@
 
 ## Instalación del proyecto 
 1. Clona el repositorio en el directorio que quieras con "git clone url"
-2. Crea un Directorio virtual (http://localhost/add_vhost.php)
+2. Crea un Directorio virtual (http://localhost/add_vhost.php) (P.e:c:/wamp64/www/api_paises/public)
 3. Abre un Terminal en la carpeta del proyecto.
 4. Ejecuta "composer update"
 
