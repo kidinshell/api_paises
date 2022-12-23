@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel de Países{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <div class="tittle">
+        <div class="float-left">
+            <h2>Paises En la API ✅</h2> 
+        </div>
+        <div class="float-right buttons"> 
+            <a href="{{ path('api_upload')}}">Cargar Paises a BBDD</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    
+        {{ include('includes/api-country-list.html.twig') }}
+</div>
+{% endblock %}

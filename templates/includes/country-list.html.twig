@@ -1,0 +1,35 @@
+{% if countrys|length >= 1 %}   
+<table>
+        <tr>
+            <th>Bandera</th>
+            <th>Código</th>
+            <th>País</th>
+            <th>Capital</th>
+            <th>Población</th>
+            <th>Acciones</th>
+        </tr>
+        
+        {% for country in countrys %}
+            <tr>
+                <td><img class="countryFlag" src="{{ country.countryflag  }}" /></td>
+                <td>{{ country.countryCode  }}</td>
+                <td>{{ country.countryName  }}</td>                
+                <td>{{ country.countryCapital  }}</td>
+                <td>{{ country.countryPopulation  }}</td>
+
+                <td>
+                    
+                    <a href="{{ path('country_detail', {'id':country.id}) }}"  alt="Ver el detalle del país"><i class="fa-solid fa-eye"></i></a>
+                    <a href="{{ path('country_edit', {'id':country.id}) }}"  alt="Edita los datos del país"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{ path('api_download', {'id':country.id}) }}" alt="actualiza con los datos de la API"><i class="fa-solid fa-download"></i></a>
+                    <a href="{{ path('country_delete', {'id':country.id}) }}"  alt="Elimina el país de la lista"><i class="fa-solid fa-trash"></i></a>
+                   
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}  
+    
+    <h2>No Hay Paises En Este Momento</h2>
+    
+{% endif %}  

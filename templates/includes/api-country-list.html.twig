@@ -1,0 +1,27 @@
+{% if data|length >= 1 %}   
+
+<table>
+        <tr>
+            <th>Bandera</th>
+            <th>Código</th>
+            <th>País</th>  
+            <th>Capital</th>
+            <th>Población</th>
+        </tr>
+
+        {% for country in data %}
+            <tr>
+            
+                <td><img class="countryFlag" src="{{ data[country.code]['flag']  }}" /></td>
+                 <td>{{ data[country.code]['code']  }}</td>
+                <td>{{ data[country.code]['nombre']  }}</td>
+                <td>{{ data[country.code]['capital']  }}</td>
+                <td>{{ data[country.code]['population']  }}</td> 
+            </tr>
+        {% endfor %}
+    </table>empty Twig template
+{% else %}  
+    
+    <h2>No Hay Paises En Este Momento</h2>
+    
+{% endif %}  

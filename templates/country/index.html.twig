@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel de Países{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+{% if msg is defined %}   
+   <div class="msg">{{ msg }}</div>
+{% endif %}
+
+    <h2>Paises Almacenados en BBDD </h2>
+    
+    {{ include('includes/country-list.html.twig') }}
+    
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detalle de País{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+
+    {% if msg is defined %}   
+        <div class="message {{msg['class']}}">{{ msg['text'] }}</div>
+    {% endif %}
+
+    <h2>{{ country.countryName }}</h2>
+
+    <p class="country-task">
+
+         Capital: {{ country.countryCapital }}
+        <br/>
+         Población: {{ country.countryPopulation }}
+        
+    </p>
+
+    <p>
+        
+        <img src="{{ country.countryFlag }}" class="flagDetail" />
+        
+    </p>
+   
+</div>
+{% endblock %}{# empty Twig template #}

@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+
+  miservicio_mysql:
+      image: mysql:8.0.27
+      environment:
+        - MYSQL_DATABASE=prueba_auren
+        - MYSQL_ROOT_PASSWORD=claveroot
+        - MYSQL_USER=josefernandez
+        - MYSQL_PASSWORD=claveroot
+      volumes:
+        # Montamos un volumen para MySQL para no perder los datos de bd
+        - ./volumenes/mysql:/var/lib/mysql
+      expose:
+        - 3306
+      ports:
+        - 3306:3306
+
+  miservicio_php:
+    image: php:8.1-apache
+    volumes:
+      # Montamos nuestra web desde fuera en el directorio web del contenedor
+      - ./miweb/:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80
+    links: 
+      - miservicio_mysql
+      
+  apache:
+    image: httpd:latest
+    container_name: my-apache-app
+    ports:
+    - '8080:80'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs
+###> doctrine/doctrine-bundle ###
+  database:
+    image: postgres:${POSTGRES_VERSION:-14}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  db-data:
+###< doctrine/doctrine-bundle ###

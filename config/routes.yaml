@@ -1,0 +1,37 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+countrys:
+    path: /
+    controller: App\Controller\CountryController::index
+
+country_detail:
+    path: /country/{id}
+    controller: App\Controller\CountryController::detail
+    
+country_creation:
+    path: /create
+    controller: App\Controller\CountryController::creation
+    
+country_edit:
+    path: /edit-country/{id}
+    controller: App\Controller\CountryController::edit
+    
+country_delete:
+    path: /delete-country/{id}
+    controller: App\Controller\CountryController::delete
+
+api_view:
+    path: /api-view/
+    controller: App\Controller\ApiController::index
+
+api_upload:
+    path: /upload-api-countrys
+    controller: App\Controller\ApiController::upload
+
+api_download:
+    path: /descargar-datos-api/{id}
+    controller: App\Controller\ApiController::downloadCountry
