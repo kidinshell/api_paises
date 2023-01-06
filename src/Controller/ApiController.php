@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Country;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\Services\apiServices;
 
 class ApiController extends AbstractController
 {
@@ -62,8 +62,7 @@ class ApiController extends AbstractController
 
     /** CONSUME LA API Y DEVUELVE EL ARRAY */
     public function allApiCountry(){
-        $countrys_url = 'https://restcountries.com/v3.1/all';
-        $countryData = file_get_contents($countrys_url);
+        $countryData = file_get_contents($this->getParameter('api_country_url'));
         $countryData = json_decode($countryData);
 
         return $countryData;
